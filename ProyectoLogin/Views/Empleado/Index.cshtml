@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ProyectoLogin.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+    <crossorigin ="anonymous">
+        <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/06f80f73dc.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script src="https://kit.fontawesome.com/cc69f106cf.js" crossorigin="anonymous"></script>
+</head>
+<div>
+    <div class="row justify-content-center">
+        <div class="col-4 mb-3">
+            <a asp-action="VistaEmpleado" asp-controller="Empleado" class="btn-primary d-block mx-auto btn-lg"></i> Empleado</a>
+        </div>
+        <div class="col-4 mb-3">
+            <a asp-action="VistaActivo" asp-controller="Empleado" class="btn-primary d-block mx-auto btn-lg"></i>Activo</a>
+        </div>
+        <div class="col-4 mb-3">
+            <a asp-action="VistaActivoEmpleado" asp-controller="Empleado" class="btn-primary d-block mx-auto btn-lg"></i> ActivoEmpleado</a>
+        </div>
+        <div class="col-4 mb-3">
+            <a asp-action="VistaCrear" asp-controller="Empleado" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo Empleado</a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="offset-12">
+            <div class="card border">
+                <div class="card-header bg-dark">
+                    <h1 class="text-white"><strong>Empleados</strong></h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table table-bordered" id="tblEmpleado" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>IdEmpleado</th>
+                                        <th>NumEmpleado</th>
+                                        <th>FechaIngreso</th>
+                                        <th>Estatus</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.IdEmpleado</td>
+                                            <td>@item.NumEmpleado</td>
+                                            <td>@item.FechaIngreso</td>
+                                            <td>@item.Estatus</td>
+                                            <td>
+                                                <a asp-action="Editar" asp-route-id="@item.IdEmpleado" class="btn btn-warning"><i class="fa-solid fa-pen-nib"></i> Editar</a>
+                                                <a asp-action="Eliminar" asp-route-id="@item.IdEmpleado" class="btn btn-danger"><i class="fa-solid fa-poo"></i> Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No hay registro</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

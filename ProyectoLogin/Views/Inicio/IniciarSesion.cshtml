@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IniciarSesion</title>
+    <link href="~/css/Login.css" rel="stylesheet" />
+</head>
+<body> 
+    <div class="login-box">
+  <h2>Login</h2>
+        <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+            <div class="user-box">
+                <input type="text"  required name="correo" />
+                <label>Ingresar Correo</label>
+            </div>
+            <div class="user-box">
+                <input  type="password"  required name="clave" />
+                <label>
+                    Ingresar Contraseña
+                </label>
+            </div>
+            <button class="transparent-button" type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Acceder
+            </button>
+            @if (ViewData["Mensaje"] != null)
+            {
+                
+                <div class="form-group">
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                </div>
+            }
+            <br>
+            <br>
+            <br>
+            <p>¿No tienes una cuenta? </p><a href="@Url.Action("Registrarse","Inicio")">Registrar!</a>
+  </form>
+        <a form asp-controller="Empleado" asp-action="Index">A casa</a>
+</div>
+
+   
+</body>
+</html>

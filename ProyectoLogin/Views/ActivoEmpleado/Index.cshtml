@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProyectoLogin.Models.ActivoEmpleado>
+
+@{
+    ViewData["Title"] = "ActivoEmpleado";
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+    <crossorigin ="anonymous">
+        <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/06f80f73dc.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script src="https://kit.fontawesome.com/cc69f106cf.js" crossorigin="anonymous"></script>
+</head>
+<div>
+    <div class="row justify-content-center">
+        <div class="col-4 mb-3">
+            <a asp-action="VistaEmpleado" asp-controller="ActivoEmpleado" class="btn-primary d-block mx-auto btn-lg"></i> Empleado</a>
+        </div>
+        <div class="col-4 mb-3">
+            <a asp-action="VistaActivo" asp-controller="ActivoEmpleado" class="btn-primary d-block mx-auto btn-lg"></i>Activo</a>
+        </div>
+        <div class="col-4 mb-3">
+            <a asp-action="VistaActivoEmpleado" asp-controller="ActivoEmpleado" class="btn-primary d-block mx-auto btn-lg"></i> Activo/Empleado</a>
+        </div>
+        <div class="col-4 mb-3">
+            <a asp-action="VistaCrear" asp-controller="ActivoEmpleado" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo ActivoEmpleado</a>
+        </div>
+
+    <div class="container-fluid">
+        <div class="offset-12">
+            <div class="card border">
+                <div class="card-header bg-dark">
+                    <h1 class="text-white"><strong>ActivoEmpleado</strong></h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table table-bordered" id="tblActivoEmpleado" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>IdActivoEmpleado</th>
+                                        <th>Identificador empleado </th>
+                                        <th>Identificador activo</th>
+                                        <th>Fecha de asignación</th>
+                                        <th>Fecha de liberacion</th>
+                                        <th>Fecha de entrega</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.IdActivoEmpleado</td>
+                                            <td>@item.FkEmpleado</td>
+                                            <td>@item.FkActivo</td>
+                                            <td>@item.FechaDeAsignacion</td>
+                                            <td>@item.FechaDeLiberacion</td>
+                                            <td>@item.FechaDeEntrega</td>
+                                            <td>
+                                                <a asp-action="Editar" asp-route-id="@item.IdActivoEmpleado" class="btn btn-warning"><i class="fa-solid fa-pen-nib"></i> Editar</a>
+                                                <a asp-action="Eliminar" asp-route-id="@item.IdActivoEmpleado" class="btn btn-danger"><i class="fa-solid fa-poo"></i> Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No hay registro</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

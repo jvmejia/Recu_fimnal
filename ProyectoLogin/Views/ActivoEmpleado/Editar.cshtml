@@ -1,0 +1,60 @@
+﻿@model ProyectoLogin.Models.ActivoEmpleado
+@{
+    ViewData["Title"] = "ActivoEmpleado";
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+    <crossorigin ="anonymous">
+        <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/06f80f73dc.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script src="https://kit.fontawesome.com/cc69f106cf.js" crossorigin="anonymous"></script>
+</head>
+<div class="container-fluid">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Editar</strong></h1>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Editor" method="post">
+                    @*                    Id Del usuario oculto*@
+                    <input type="hidden" asp-for="IdActivoEmpleado" />
+                    <div class="form-group">
+                        <label asp-for="FkEmpleado">Identificador empleado</label>
+                        <input asp-for="FkEmpleado" class="form-control" placeholder="Identificador empleado" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FkActivo">Identificador activo</label>
+                        <input asp-for="FkActivo" class="form-control" placeholder="Identificador activo" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FechaDeAsignacion">Fecha de asignación</label>
+                        <input asp-for="FechaDeAsignacion" class="form-control" placeholder="Fecha de asignación" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FechaDeLiberacion">Fecha De Liberacion</label>
+                        <input asp-for="FechaDeLiberacion" class="form-control" placeholder="Fecha De Liberacion" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FechaDeEntrega">Fecha De Entrega</label>
+                        <input asp-for="FechaDeEntrega" class="form-control" placeholder="Fecha De Entrega" required>
+                    </div>
+                    <div class="container-fluid">
+                        <button type="submit" class="btn btn-success"><i class="fa-solid fa-feather"></i> Editar</button>
+                    </div>
+                </form>
+                <br />
+                <div class="container-fluid">
+                    <a class="btn btn-outline-success" asp-controller="ActivoEmpleado" asp-action="Index"> Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
